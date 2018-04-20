@@ -1,20 +1,28 @@
 ﻿<Project Sdk="FSharp.NET.Sdk;Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFrameworks>net45;netstandard1.6</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VersionPrefix>1.2.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="JsonHelpers.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="JsonConverters.fs" />
-    <Compile Include="Helpers.fs" />
-    <Compile Include="Api.fs" />
-
+    <Compile Include="Tools.fs" />
+    <Compile Include="RequestsTypes.fs" />
+    <!-- <Compile Include="api.fsi" /> -->
+    <Compile Include="api.fs" />
     <Compile Include="Bot/Sscanf.fs" />
     <Compile Include="Bot/Bot.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FSharp.Core" Version="4.1.*" />
+    <PackageReference Include="FSharp.Core" Version="4.2.1" />
     <PackageReference Include="FSharp.NET.Sdk" Version="1.0.*" PrivateAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="System.Net.Http" Version="4.3.*" />
   </ItemGroup>
 </Project>
